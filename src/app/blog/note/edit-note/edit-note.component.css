@@ -1,0 +1,164 @@
+.m-editer-area {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    background: rgba(91, 28, 111, 0.8);
+    transition: all .5s;
+}
+.m-editer-area header, .m-editer-area footer {
+    text-align: right;
+    font-size: 0;
+}
+.m-editer-area a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+    color: #fff;
+    transition: all .5s;
+}
+.m-editer-area a:hover {
+    background: rgba(0,0,0,0.2);
+}
+.m-editer-area a.z-atv {
+    color: #dd3c1f;
+    background: rgba(255,255,255,0.8);
+}
+.m-editer-area footer a {
+    padding: 0 10px;
+}
+
+.m-editer-area footer a:active, a.u-screen-tab:active {
+    background: #dd3c1f;
+    color: #fff;
+    transition: none;
+}
+.m-editer-area footer a:hover, a.u-screen-tab:hover {
+    text-decoration: none;
+}
+.m-editer-area footer p {
+    float: left;
+    margin-left: 15px;
+    color: #fff;
+    padding-top: 12px;
+}
+.m-editer-area section {
+    position: relative;
+    height: 480px;
+    background: #fff;
+    overflow: hidden;
+}
+.m-editer-area section>div {
+    transition: all .5s;
+}
+.u-wirte {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+.u-wirte textarea {
+    width: 98%;
+    height: 100%;
+    padding: 0 1%;
+    line-height: 150%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 15px;
+    font-family: "微软雅黑"
+}
+
+.u-view {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: auto;
+    padding: 1%;
+    background: #fff;
+    box-shadow: 0 0 10px #000 inset;
+    transform: translateX(100%);
+}
+
+.u-view article {
+    padding: 0;
+    background: transparent;
+    max-width: 800px;
+    margin: auto;
+}
+.u-view.z-half {
+    left: 50%;
+    transform: translateX(0);
+}
+
+.u-wirte.z-half {
+    right: 50%;
+}
+
+.u-view.z-atv {
+    transform: translateX(0);
+}
+
+.z-full {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin-top: 0;
+}
+
+.z-full section {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    bottom: 50px;
+    right: 0;
+    height: auto;
+}
+
+.z-full footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+header {
+    padding:10px 0;
+}
+header .u-menu {
+    position: absolute;
+    top: 0px;
+    left: 65%;
+    right: 0px;
+    padding: 0px 10px;
+}
+.u-menu a i {
+    margin: 10px;
+}
+header .u-title{
+    width: 65%;
+}
+header .u-title input{
+    background-color: transparent;
+    color: whitesmoke;
+    border: none;
+}
+footer .u-count{
+    width: 20%;
+    float: left;
+    color: white;
+    font-size: 16px;
+}
+footer .u-menu{
+    width: 70%;
+    float: right;
+}
+footer .u-menu *{
+    float: right;
+}

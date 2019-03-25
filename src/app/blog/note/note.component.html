@@ -1,0 +1,70 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    文章列表
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body table-responsive">
+
+                <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>文章标题</th>
+                        <th>阅读次数</th>
+                        <th>点赞次数</th>
+                        <th>
+                            <div style="text-align:center">是否发布</div>
+                        </th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let note of notes | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                        <td>{{note.title}}</td>
+                        <td>{{note.scan}}</td>
+                        <td>{{note.like}}</td>
+                        <td align="center">
+                            <i class="material-icons" *ngIf="note.isPublic" style="color:green;">check_box</i>
+                            <i class="material-icons" *ngIf="!note.isPublic" style="color:red;">indeterminate_check_box</i>
+                        </td>
+                        <td>{{note.creationTime}}</td>
+                        <td class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="material-icons">menu</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="editNote(note)"><i class="material-icons">create</i>编辑</a></li>
+                                <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(note)"><i class="material-icons">delete_sweep</i>删除</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination-controls (pageChange)="getDataPage($event)" id="server"></pagination-controls>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="createNote()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-edit-note #editNoteModal (modalSave)="test($event)"></app-edit-note>

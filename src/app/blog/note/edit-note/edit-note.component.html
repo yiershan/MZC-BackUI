@@ -1,0 +1,56 @@
+<div bsModal #editNoteModal="bs-modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="editNoteModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="container">
+
+        <div #modalContent>
+            <div *ngIf="active">
+                <div class="m-editer-area" [ngClass]="{'z-full': isFull}">
+                    <!--************* 顶部，文章标题和一些菜单  ****************-->
+                    <header>
+                        <div class="u-title">
+                            <input type="text" [(ngModel)]="note.title" class="form-control">
+                        </div>
+                        <div class="u-menu">
+                            <a (click)="changeModel(2)" class="u-screen-tab">
+                                <i class="material-icons">first_page</i>
+                            </a>
+                            <a (click)="changeModel(1)" class="u-screen-tab">
+                                <i class="material-icons">priority_high</i>
+                            </a>
+                            <a (click)="changeModel(0)" class="u-screen-tab">
+                                <i class="material-icons">last_page</i>
+                            </a>
+                            <a *ngIf="isFull" (click)="full()" class="u-screen-tab">
+                                <i class="material-icons">fullscreen_exit</i>
+                            </a>
+                            <a *ngIf="!isFull" (click)="full()" class="u-screen-tab">
+                                <i class="material-icons">fullscreen</i>
+                            </a>
+                        </div>
+                    </header>
+                    <!--************* 中间部分，编辑和预览区域  ****************-->
+                    <section>
+                        <!--************* 中间部分左边，编辑区域  ****************-->
+                        <div class="u-wirte" [ngClass]="{'z-half': 1=== model}">
+                            <textarea id="editer" [(ngModel)]="note.content" [formControl]="term"></textarea>
+                        </div>
+                        <!--************* 中间部分右边，预览区域  ****************-->
+                        <div class="u-view" [ngClass]="{'z-half': 1=== model,'z-atv': 2===model}">
+                            <article [innerHTML]="preViewContent"></article>
+                        </div>
+                    </section>
+                    <!--************* 底部，  ****************-->
+                    <footer>
+                        <div class="u-count">
+                            <p>共{{note.content.length}}字节</p>
+                        </div>
+                        <div class="u-menu">
+                            <a (click)="publicNote()">发布</a>
+                            <a (click)="close()">关闭</a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
